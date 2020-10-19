@@ -1,3 +1,5 @@
+Welcome guys !
+
 # Video-games templating
 
 ## Usage
