@@ -58,20 +58,13 @@ export function makeApp(mongoClient: MongoClient): core.Express {
 
   const oauthClient = new OAuth2Client(oauthClientConstructorProps);
 
-  /*   app.get("/oauth/callback", sessionParser, (request: Request, response: Response) => {
-    // get back an Access Token from an OAuth2 Authorization Code
-
-    if (request.session) {
-      request.session.accessToken = token.access_token;
-    }
-    response.redirect("/loggued-in-part-of-your-app");
-  }); */
   app.get("/login", async (_request, response) => {
     const authURL = await oauthClient.getAuthorizationURL("state");
 
     const authURLinString = authURL.toString();
-    response.render("pages/home", { authURLinString });
+    response.redirect(authURLinString);
   });
+  //code Here the autorization token
   app.get("/", (_request, response) => response.render("pages/home"));
   app.get("/api", (_request, response) => response.render("pages/api"));
 
