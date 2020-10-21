@@ -1,4 +1,4 @@
-import { Db } from "mongodb";
+import { MongoClient } from "mongodb";
 import * as core from "express-serve-static-core";
 import express from "express";
 import * as gamesController from "./controllers/games.controller";
@@ -7,15 +7,18 @@ import * as platformsController from "./controllers/platforms.controller";
 import GameModel, { Game } from "./models/gameModel";
 import PlatformModel, { Platform } from "./models/platformModel";
 import bodyParser from "body-parser";
+import session from "express-session";
+import mongoSession from "connect-mongo";
+import OAuth2Client, { OAuth2ClientConstructor } from "@fwl/oauth2";
 
 const clientWantsJson = (request: express.Request): boolean => request.get("accept") === "application/json";
 
 const jsonParser = bodyParser.json();
 const formParser = bodyParser.urlencoded({ extended: true });
 
-export function makeApp(db: Db): core.Express {
+export function makeApp(mongoClient: MongoClient): core.Express {
   const app = express();
-
+  const db = mongoClient.db();
   nunjucks.configure("views", {
     autoescape: true,
     express: app,
@@ -27,6 +30,47 @@ export function makeApp(db: Db): core.Express {
   const platformModel = new PlatformModel(db.collection<Platform>("platforms"));
   const gameModel = new GameModel(db.collection<Game>("games"));
 
+  const mongoStore = mongoSession(session);
+  if (process.env.NODE_ENV === "production") {
+    app.set("trust proxy", 1);
+  }
+  const sessionParser = session({
+    secret: "&7imnQy5v0QL4$o7^jL#^#zEk#3vM31yhs",
+    name: "sessionId",
+    resave: false,
+    saveUninitialized: true,
+    store: new mongoStore({
+      client: mongoClient,
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      expires: new Date(Date.now() + 3600000),
+    },
+  });
+  const oauthClientConstructorProps: OAuth2ClientConstructor = {
+    openIDConfigurationURL: "https://fewlines.connect.prod.fewlines.tech/.well-known/openid-configuration",
+    clientID: `${process.env.CLIENT_ID}`,
+    clientSecret: `${process.env.CLIENT_SECRET}`,
+    redirectURI: "http://localhost:8080/oauth/callback",
+    audience: `${process.env.AUDIENCE}`,
+    scopes: ["email"],
+  };
+
+  const oauthClient = new OAuth2Client(oauthClientConstructorProps);
+
+  /*   app.get("/oauth/callback", sessionParser, (request: Request, response: Response) => {
+    // get back an Access Token from an OAuth2 Authorization Code
+    if (request.session) {
+      request.session.accessToken = token.access_token;
+    }
+    response.redirect("/loggued-in-part-of-your-app");
+  }); */
+  app.get("/login", async (_request, response) => {
+    const authURL = await oauthClient.getAuthorizationURL("state");
+
+    const authURLinString = authURL.toString();
+    response.render("pages/home", { authURLinString });
+  });
   app.get("/", (_request, response) => response.render("pages/home"));
   app.get("/api", (_request, response) => response.render("pages/api"));
 
