@@ -29,6 +29,7 @@ export type GameInput = {
   total_rating?: number;
   total_rating_count?: number;
   url: string;
+  price: number;
 };
 
 export type Game = GameInput & {
