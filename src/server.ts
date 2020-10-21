@@ -1,4 +1,4 @@
-import { Db, MongoClient } from "mongodb";
+import { MongoClient } from "mongodb";
 import * as core from "express-serve-static-core";
 import express from "express";
 import * as gamesController from "./controllers/games.controller";
@@ -34,6 +34,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   if (process.env.NODE_ENV === "production") {
     app.set("trust proxy", 1);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const sessionParser = session({
     secret: "&7imnQy5v0QL4$o7^jL#^#zEk#3vM31yhs",
     name: "sessionId",
