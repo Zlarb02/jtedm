@@ -43,6 +43,7 @@ const ps4Games = [
     total_rating: 92.98579737521561,
     total_rating_count: 1228,
     url: "https://www.igdb.com/games/uncharted-4-a-thief-s-end",
+    price: 5000,
   },
   {
     code: 41877,
@@ -81,6 +82,7 @@ const ps4Games = [
     total_rating: 92.02971208319329,
     total_rating_count: 36,
     url: "https://www.igdb.com/games/uncharted-2-among-thieves-remastered",
+    price: 5000,
   },
   {
     code: 41878,
@@ -116,6 +118,7 @@ const ps4Games = [
     total_rating: 75.17433044729201,
     total_rating_count: 38,
     url: "https://www.igdb.com/games/uncharted-drakes-fortune-remastered",
+    price: 5000,
   },
   {
     code: 41876,
@@ -151,6 +154,7 @@ const ps4Games = [
     total_rating: 91.6404239885329,
     total_rating_count: 32,
     url: "https://www.igdb.com/games/uncharted-3-drakes-deception-remastered",
+    price: 5000,
   },
   {
     code: 26192,
@@ -217,6 +221,7 @@ const ps4Games = [
     total_rating: 93.56165170693114,
     total_rating_count: 299,
     url: "https://www.igdb.com/games/the-last-of-us-part-ii",
+    price: 5000,
   },
   {
     code: 6036,
@@ -262,6 +267,7 @@ const ps4Games = [
     total_rating: 95.9199099186142,
     total_rating_count: 673,
     url: "https://www.igdb.com/games/the-last-of-us-remastered",
+    price: 5000,
   },
   {
     code: 11169,
@@ -313,6 +319,7 @@ const ps4Games = [
     total_rating: 88.2050267800908,
     total_rating_count: 117,
     url: "https://www.igdb.com/games/final-fantasy-vii-remake",
+    price: 5000,
   },
   {
     code: 19560,
@@ -379,6 +386,7 @@ const ps4Games = [
     total_rating: 96.16137961163035,
     total_rating_count: 1122,
     url: "https://www.igdb.com/games/god-of-war--1",
+    price: 5000,
   },
   {
     code: 19959,
@@ -424,6 +432,7 @@ const ps4Games = [
     total_rating: 83.99797064436041,
     total_rating_count: 71,
     url: "https://www.igdb.com/games/god-of-war-iii-remastered",
+    price: 5000,
   },
   {
     code: 7334,
@@ -469,6 +478,7 @@ const ps4Games = [
     total_rating: 91.34878725854095,
     total_rating_count: 804,
     url: "https://www.igdb.com/games/bloodborne",
+    price: 5000,
   },
   {
     code: 42920,
@@ -504,6 +514,7 @@ const ps4Games = [
     summary:
       "The plot revolves around Aloy, a hunter and archer living in a world overrun by robots. Having been cloistered her whole life, she sets out to discover the dangers that kept her sheltered. The character makes use of ranged, melee weapons and stealth tactics to combat the mechanised creatures, whose remains can also be looted for resources. A skill tree facilitates gameplay improvements. The game features an open world environment for Aloy to explore, divided into tribes that hold side quests to undertake, while the main story guides her throughout the whole world.",
     url: "https://www.igdb.com/games/horizon-zero-dawn-collectors-edition",
+    price: 5000,
   },
 ];
 
@@ -552,6 +563,7 @@ const xBox360Games = [
     total_rating: 81.57877030705825,
     total_rating_count: 150,
     url: "https://www.igdb.com/games/fable-ii",
+    price: 5000,
   },
   {
     code: 1592,
@@ -597,6 +609,7 @@ const xBox360Games = [
     total_rating: 66.5625,
     total_rating_count: 11,
     url: "https://www.igdb.com/games/fable-the-journey",
+    price: 5000,
   },
   {
     code: 45147,
@@ -621,6 +634,7 @@ const xBox360Games = [
     summary:
       'Has a three-way folding steel container. \nBestiarum: A hard cover, bound collection of information and art covering the species, cultures and civilizations of Halo 3. \nA relatively small poster of John-117 and the Arbiter. \nAn illuminating collection of original "Halo 3" storyboard art from artist Lee Wilson, depicting key moments and pivotal scenes from the epic cinematic production of "Halo." \nAn extra disc that contains exclusive, behind-the-scenes footage and videos, a high-definition "Making of \'Halo 3\'," a documentary showcasing the Bungie team and its effort to create the most anticipated title in the industry\'s history, numerous high-definition featurettes documenting the creative design processes involved in developing the game; and a look at some early game concepts and their evolution through the game\'s development. \nThe extra disc contains an audio-visual calibration tool.',
     url: "https://www.igdb.com/games/halo-3-limited-edition",
+    price: 5000,
   },
   {
     code: 548,
@@ -662,6 +676,7 @@ const xBox360Games = [
     total_rating: 87.38997387095615,
     total_rating_count: 254,
     url: "https://www.igdb.com/games/gears-of-war-2",
+    price: 5000,
   },
   {
     code: 492,
@@ -703,6 +718,7 @@ const xBox360Games = [
     total_rating: 89.5108940844678,
     total_rating_count: 194,
     url: "https://www.igdb.com/games/gears-of-war-3",
+    price: 5000,
   },
   {
     code: 1319,
@@ -744,6 +760,7 @@ const xBox360Games = [
     total_rating: 73.1871019471189,
     total_rating_count: 90,
     url: "https://www.igdb.com/games/gears-of-war-judgment",
+    price: 5000,
   },
   {
     code: 47450,
@@ -775,6 +792,7 @@ const xBox360Games = [
     summary:
       'This limited edition of Gears of War is packaged in a collectible metal box along with a book entitled "Destroyed Beauty," which offers a detailed look at the artwork featured in the game\'s futuristic environments. Also included is a second DVD that explores the making of Gears of War with lead designer Cliff Bleszinski and his development team. \n \nAnointed by the games media as Microsoft\'s first "killer app" for its Xbox 360, Epic Games\' Gears of War is a futuristic third-person shooter emphasizing tactical action over run-and-gun battles. Players are thrust in a climactic clash between what\'s left of humankind and a swarming underground race called the Locust Horde. The main protagonist is Marcus Fenix, a once disgraced soldier looking to redeem himself by leading a ragtag squad against the monstrous threat. \n \nSince the alien army vastly outnumbers the team, players must use the post-apocalyptic world to their advantage, such as seeking cover behind dumpsters, pillars, cars, rubble, and other objects. The developer has adapted its award-winning Unreal technology to create interactive environments with a physics-based damage system. Players, for instance, can shoot down structures to forge new routes or opportunities to trap the enemy. Up to three squad mates will accompany Fenix in each mission, with basic commands such as "advance," "hold," or "freelance" available to guide them. \n \nA behind-the-shoulder view similar to the one employed in Capcom\'s Resident Evil 4 is the default perspective in Gears of War. Weapons include an assortment of grenades, pistols, assault rifles, and other long-range blasters, many of which offer a means to engage enemies in melee combat. The Locust Horde is not averse to lunging, rushing, or gnawing at soldiers, so players have the opportunity to perform grisly finishing moves by quickly tapping specific button sequences during close encounters. Cooperative support for two players is offered throughout the campaign, and up to eight can battle each other in team-oriented modes via Xbox Live.',
     url: "https://www.igdb.com/games/gears-of-war-limited-collectors-edition",
+    price: 5000,
   },
 ];
 
@@ -840,6 +858,7 @@ const switchGames = [
     total_rating: 87.89661547216039,
     total_rating_count: 86,
     url: "https://www.igdb.com/games/the-legend-of-zelda-links-awakening--1",
+    price: 5000,
   },
   {
     code: 116419,
@@ -889,6 +908,7 @@ const switchGames = [
     total_rating: 76.43507967385031,
     total_rating_count: 28,
     url: "https://www.igdb.com/games/cadence-of-hyrule-crypt-of-the-necrodancer-featuring-the-legend-of-zelda",
+    price: 5000,
   },
   {
     code: 50598,
@@ -955,6 +975,7 @@ const switchGames = [
     summary:
       "Forget everything you know about The Legend of Zelda games. Step into a world of discovery, exploration and adventure in The Legend of Zelda: Breath of the Wild, a boundary-breaking game in the acclaimed series. The limited edition contains the game (Nintendo Switch version), The Legend of Zelda: Breath of the Wild Sound Selection CD and a Master Sword of Resurrection figurine.",
     url: "https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild-limited-edition--1",
+    price: 5000,
   },
   {
     code: 133923,
@@ -1021,6 +1042,7 @@ const switchGames = [
     total_rating: 81.72145428142571,
     total_rating_count: 27,
     url: "https://www.igdb.com/games/paper-mario-the-origami-king",
+    price: 5000,
   },
   {
     code: 26764,
@@ -1083,6 +1105,7 @@ const switchGames = [
     total_rating: 88.80831621722065,
     total_rating_count: 227,
     url: "https://www.igdb.com/games/mario-kart-8-deluxe",
+    price: 5000,
   },
   {
     code: 90101,
@@ -1139,6 +1162,7 @@ const switchGames = [
     total_rating: 87.17343689482995,
     total_rating_count: 429,
     url: "https://www.igdb.com/games/super-smash-bros-ultimate",
+    price: 5000,
   },
   {
     code: 109462,
@@ -1195,6 +1219,7 @@ const switchGames = [
     total_rating: 86.38388044213795,
     total_rating_count: 135,
     url: "https://www.igdb.com/games/animal-crossing-new-horizons",
+    price: 5000,
   },
   {
     code: 26766,
@@ -1261,6 +1286,7 @@ const switchGames = [
     total_rating: 88.44757874107094,
     total_rating_count: 95,
     url: "https://www.igdb.com/games/xenoblade-chronicles-2",
+    price: 5000,
   },
   {
     code: 122238,
@@ -1302,6 +1328,7 @@ const switchGames = [
     total_rating: 85.95448206505486,
     total_rating_count: 16,
     url: "https://www.igdb.com/games/xenoblade-chronicles-definitive-edition",
+    price: 5000,
   },
   {
     code: 25623,
@@ -1365,6 +1392,7 @@ const switchGames = [
     total_rating: 80.18858441364759,
     total_rating_count: 21,
     url: "https://www.igdb.com/games/monster-hunter-generations-ultimate",
+    price: 5000,
   },
 ];
 
@@ -1436,6 +1464,7 @@ const games = [
     total_rating: 84.00061778694555,
     total_rating_count: 955,
     url: "https://www.igdb.com/games/minecraft",
+    price: 5000,
   },
   {
     code: 1905,
@@ -1478,6 +1507,7 @@ const games = [
     total_rating: 75.50340573126725,
     total_rating_count: 380,
     url: "https://www.igdb.com/games/fortnite",
+    price: 5000,
   },
   {
     code: 8173,
@@ -1523,6 +1553,7 @@ const games = [
     total_rating: 86.26585499631615,
     total_rating_count: 748,
     url: "https://www.igdb.com/games/overwatch",
+    price: 5000,
   },
   {
     code: 5601,
@@ -1593,6 +1624,7 @@ const games = [
     total_rating: 85.6980878415041,
     total_rating_count: 284,
     url: "https://www.igdb.com/games/the-witness",
+    price: 5000,
   },
   {
     code: 472,
@@ -1638,6 +1670,7 @@ const games = [
     total_rating: 91.90119963925595,
     total_rating_count: 2140,
     url: "https://www.igdb.com/games/the-elder-scrolls-v-skyrim",
+    price: 5000,
   },
   {
     cover: {
@@ -1686,6 +1719,7 @@ const games = [
     total_rating: 89.1594853885381,
     total_rating_count: 560,
     url: "https://www.igdb.com/games/stardew-valley",
+    price: 5000,
   },
 ];
 
