@@ -29,3 +29,19 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.footer {
+  background-color: rgba(0, 0, 0, 0);
+
+  /* 
+  
+  custom moi ce style l'ami je sais que t'en meurt d'envie
+
+MAIS /!\ moi je pose un veto sur display: fixed; !INTERDIT :p juste pour embeter Jerome
+
+*/
+}
+
+.position-login {
+  background-color: blueviolet;
+}
