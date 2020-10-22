@@ -34,7 +34,6 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   if (process.env.NODE_ENV === "production") {
     app.set("trust proxy", 1);
   }
-
   const sessionParser = session({
     secret: "&7imnQy5v0QL4$o7^jL#^#zEk#3vM31yhs",
     name: "sessionId",
@@ -65,6 +64,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
     const authURLinString = authURL.toString();
     response.redirect(authURLinString);
   });
+
   app.get("/logout", sessionParser, async (_request, response) => {
     if (_request.session) {
       _request.session.destroy(() => {
@@ -99,6 +99,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
       });
     }
   });
+
   app.get("/api", (_request, response) => response.render("pages/api"));
 
   app.get("/platforms", sessionParser, platformsController.index(platformModel));
@@ -119,6 +120,12 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   app.put("/games/:slug", sessionParser, jsonParser, gamesController.update(gameModel, platformModel));
   app.post("/games/:slug", sessionParser, formParser, gamesController.update(gameModel, platformModel));
   app.delete("/games/:slug", sessionParser, jsonParser, gamesController.destroy(gameModel));
+
+  app.get("/cart", (req, res) => {
+    res.render("pages/cart");
+  });
+
+  app.post("/ajouter/:slug", gamesController.getCart(gameModel));
 
   app.get("/*", (request, response) => {
     console.log(request.path);

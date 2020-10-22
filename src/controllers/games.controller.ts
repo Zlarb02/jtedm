@@ -200,3 +200,13 @@ export function destroy(gameModel: GameModel) {
     }
   };
 }
+
+export function getCart(gameModel: GameModel) {
+  return async (request: Request, response: Response): Promise<void> => {
+    const game = await gameModel.findBySlug(request.params.slug);
+    // response.json(game?.name);
+    response.render("pages/cart", { game: game });
+    console.log({ game: game?.name });
+    console.log("post !");
+  };
+}
