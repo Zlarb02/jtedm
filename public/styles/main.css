@@ -1,3 +1,20 @@
+#loginNout-btn {
+  border-radius: 20%;
+  background-color: navy;
+  margin-left: 4rem;
+}
+
+.nav-link-log {
+  color: cornsilk;
+}
+.nav-link-log:hover {
+  color: cornsilk;
+}
+
+#navbarNav {
+  justify-content: space-around;
+}
+
 .banner {
   height: 400px;
   background-image: url(/assets/images/banner-img.jpg);
@@ -23,9 +40,19 @@
   position: relative;
 }
 
-#wtf {
+#linksbuttoncontainerdetoutefaçontousçaçavire {
   height: calc(100vh - 456px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0);
+
+  /* 
+  
+Enfaite je met les elements qui sont en haut de la page web, en haut du css, et le footer en bas du css pour me relire facilement les amis.
+Typiquement nav en haut, footer en bas ;)
+*/
 }

@@ -1,8 +1,20 @@
 import { Request, Response } from "express";
 import PlatformModel from "../models/platformModel";
 import slugify from "slug";
+import OAuth2Client, { OAuth2ClientConstructor } from "@fwl/oauth2";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const clientWantsJson = (request: Request): boolean => request.get("accept") === "application/json";
+const oauthClientConstructorProps: OAuth2ClientConstructor = {
+  openIDConfigurationURL: "https://fewlines.connect.prod.fewlines.tech/.well-known/openid-configuration",
+  clientID: `${process.env.CLIENT_ID}`,
+  clientSecret: `${process.env.CLIENT_SECRET}`,
+  redirectURI: "http://localhost:8080/oauth/callback",
+  audience: `${process.env.AUDIENCE}`,
+  scopes: ["email"],
+};
+const oauthClient = new OAuth2Client(oauthClientConstructorProps);
 
 export function index(platformModel: PlatformModel) {
   return async (request: Request, response: Response): Promise<void> => {
@@ -10,7 +22,21 @@ export function index(platformModel: PlatformModel) {
     if (clientWantsJson(request)) {
       response.json(platforms);
     } else {
-      response.render("platforms/index", { platforms });
+      if (!request.session || !request.session.accessToken) {
+        response.render("platforms/index", { platforms, isLoggedIn: false });
+        console.log("you are not conected");
+        return;
+      }
+      try {
+        await oauthClient.verifyJWT(request.session.accessToken, process.env.JWT_ALGORITHM || "");
+        response.render("platforms/index", { platforms, isLoggedIn: true });
+        console.log("you are conected");
+      } catch (error) {
+        request.session.destroy(() => {
+          response.render("platforms/index", { isLoggedIn: false });
+          console.error(error);
+        });
+      }
     }
   };
 }
@@ -28,7 +54,21 @@ export function show(platformModel: PlatformModel) {
       if (clientWantsJson(request)) {
         response.json(platform);
       } else {
-        response.render("platforms/show", { platform });
+        if (!request.session || !request.session.accessToken) {
+          response.render("platforms/show", { platform, isLoggedIn: false });
+          console.log("you are not conected");
+          return;
+        }
+        try {
+          await oauthClient.verifyJWT(request.session.accessToken, process.env.JWT_ALGORITHM || "");
+          response.render("platforms/show", { platform, isLoggedIn: true });
+          console.log("you are conected");
+        } catch (error) {
+          request.session.destroy(() => {
+            response.render("platforms/show", { isLoggedIn: false });
+            console.error(error);
+          });
+        }
       }
     } else {
       response.status(404);

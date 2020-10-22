@@ -2,6 +2,19 @@ import { Request, Response } from "express";
 import PlatformModel from "../models/platformModel";
 import slugify from "slug";
 import GameModel from "../models/gameModel";
+import OAuth2Client, { OAuth2ClientConstructor } from "@fwl/oauth2";
+import * as dotenv from "dotenv";
+dotenv.config();
+
+const oauthClientConstructorProps: OAuth2ClientConstructor = {
+  openIDConfigurationURL: "https://fewlines.connect.prod.fewlines.tech/.well-known/openid-configuration",
+  clientID: `${process.env.CLIENT_ID}`,
+  clientSecret: `${process.env.CLIENT_SECRET}`,
+  redirectURI: "http://localhost:8080/oauth/callback",
+  audience: `${process.env.AUDIENCE}`,
+  scopes: ["email"],
+};
+const oauthClient = new OAuth2Client(oauthClientConstructorProps);
 
 const clientWantsJson = (request: Request): boolean => request.get("accept") === "application/json";
 
@@ -11,7 +24,21 @@ export function index(gameModel: GameModel) {
     if (clientWantsJson(request)) {
       response.json(games);
     } else {
-      response.render("games/index", { games });
+      if (!request.session || !request.session.accessToken) {
+        response.render("games/index", { games, isLoggedIn: false });
+        console.log("you are not conected");
+        return;
+      }
+      try {
+        await oauthClient.verifyJWT(request.session.accessToken, process.env.JWT_ALGORITHM || "");
+        response.render("games/index", { games, isLoggedIn: true });
+        console.log("you are conected");
+      } catch (error) {
+        request.session.destroy(() => {
+          response.render("games/index", { isLoggedIn: false });
+          console.error(error);
+        });
+      }
     }
   };
 }
@@ -30,7 +57,21 @@ export function show(gameModel: GameModel) {
         response.json(game);
       } else {
         game.first_release_date = new Date((game.first_release_date as number) * 1000).getTime();
-        response.render("games/show", { game });
+        if (!request.session || !request.session.accessToken) {
+          response.render("games/show", { game, isLoggedIn: false });
+          console.log("you are not conected");
+          return;
+        }
+        try {
+          await oauthClient.verifyJWT(request.session.accessToken, process.env.JWT_ALGORITHM || "");
+          response.render("games/show", { game, isLoggedIn: true });
+          console.log("you are conected");
+        } catch (error) {
+          request.session.destroy(() => {
+            response.render("games/show", { isLoggedIn: false });
+            console.error(error);
+          });
+        }
       }
     } else {
       response.status(404);
