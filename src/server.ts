@@ -30,6 +30,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   const platformModel = new PlatformModel(db.collection<Platform>("platforms"));
   const gameModel = new GameModel(db.collection<Game>("games"));
 
+  // AUTHENTIFICATION ***************************************************************************************
   const mongoStore = mongoSession(session);
   if (process.env.NODE_ENV === "production") {
     app.set("trust proxy", 1);
@@ -58,19 +59,32 @@ export function makeApp(mongoClient: MongoClient): core.Express {
 
   const oauthClient = new OAuth2Client(oauthClientConstructorProps);
 
-  /*   app.get("/oauth/callback", sessionParser, (request: Request, response: Response) => {
-    // get back an Access Token from an OAuth2 Authorization Code
-    if (request.session) {
-      request.session.accessToken = token.access_token;
-    }
-    response.redirect("/loggued-in-part-of-your-app");
-  }); */
-  app.get("/login", async (_request, response) => {
+  app.get("/login", async (request, response) => {
     const authURL = await oauthClient.getAuthorizationURL("state");
 
     const authURLinString = authURL.toString();
-    response.render("pages/home", { authURLinString });
+    response.redirect(authURLinString);
   });
+
+  app.get("/oauth/callback", sessionParser, (request, response) => {
+    // get back an Access Token from an OAuth2 Authorization Code
+    console.log("request : " + request.query.code);
+
+    const queryCode = String(request.query.code);
+    oauthClient
+      .getTokensFromAuthorizationCode(queryCode)
+      .then((token) => {
+        if (request.session) {
+          console.log("token : " + token.access_token);
+          request.session.accessToken = token.access_token;
+        }
+        console.log("request session : " + request.session);
+        response.redirect("/");
+      })
+      .catch((error) => console.log(error));
+  });
+  // FIN AUTHENTIFICATION **********************************************************************************
+
   app.get("/", (_request, response) => response.render("pages/home"));
   app.get("/api", (_request, response) => response.render("pages/api"));
 
@@ -92,6 +106,12 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   app.put("/games/:slug", jsonParser, gamesController.update(gameModel, platformModel));
   app.post("/games/:slug", formParser, gamesController.update(gameModel, platformModel));
   app.delete("/games/:slug", jsonParser, gamesController.destroy(gameModel));
+
+  app.get("/cart", (req, res) => {
+    res.render("pages/cart");
+  });
+
+  app.post("/ajouter/:slug", gamesController.getCart(gameModel));
 
   app.get("/*", (request, response) => {
     console.log(request.path);

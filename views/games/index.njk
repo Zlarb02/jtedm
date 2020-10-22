@@ -27,13 +27,21 @@
         <div class="col-3">
           <img src="{{game.cover.url}}" alt="{{game.name}} cover" class="mr-2" style="max-width: 200px; max-height: 100px;">
         </div>
-        <h3 class="col-8">
+        <div class="col-8">
+        <h3>
           <a href="/games/{{game.slug}}">{{game.name}}</a>
         </h3>
+        <h4><span class="badge badge-secondary">Price : {{ game.price / 100 }}€</span></h4>
+        </div>
         <div class="col-1 game-availability">
           {% for platform in game.platforms %}
             <img src="{{platform.platform_logo.url}}" height="40px" width="40px" class="ml-2">
           {% endfor %}
+          <div class="d-flex justify-content-end align-items-center">
+          <form action="/ajouter/{{ game.slug }}" method="POST">
+            <button type="submit"class="btn btn-outline-secondary ml-5"><i class="fas fa-cart-plus"></i></button>
+          </form>
+          </div>
         </div>
       </li>
     {% endfor %}

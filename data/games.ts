@@ -43,6 +43,7 @@ const ps4Games = [
     total_rating: 92.98579737521561,
     total_rating_count: 1228,
     url: "https://www.igdb.com/games/uncharted-4-a-thief-s-end",
+    price: 5000,
   },
   {
     code: 41877,
@@ -81,6 +82,7 @@ const ps4Games = [
     total_rating: 92.02971208319329,
     total_rating_count: 36,
     url: "https://www.igdb.com/games/uncharted-2-among-thieves-remastered",
+    price: 5000,
   },
   {
     code: 41878,
@@ -116,6 +118,7 @@ const ps4Games = [
     total_rating: 75.17433044729201,
     total_rating_count: 38,
     url: "https://www.igdb.com/games/uncharted-drakes-fortune-remastered",
+    price: 5000,
   },
   {
     code: 41876,
@@ -151,6 +154,7 @@ const ps4Games = [
     total_rating: 91.6404239885329,
     total_rating_count: 32,
     url: "https://www.igdb.com/games/uncharted-3-drakes-deception-remastered",
+    price: 5000,
   },
   {
     code: 26192,
@@ -217,6 +221,7 @@ const ps4Games = [
     total_rating: 93.56165170693114,
     total_rating_count: 299,
     url: "https://www.igdb.com/games/the-last-of-us-part-ii",
+    price: 5000,
   },
   {
     code: 6036,
@@ -262,6 +267,7 @@ const ps4Games = [
     total_rating: 95.9199099186142,
     total_rating_count: 673,
     url: "https://www.igdb.com/games/the-last-of-us-remastered",
+    price: 5000,
   },
   {
     code: 11169,
@@ -313,6 +319,7 @@ const ps4Games = [
     total_rating: 88.2050267800908,
     total_rating_count: 117,
     url: "https://www.igdb.com/games/final-fantasy-vii-remake",
+    price: 5000,
   },
   {
     code: 19560,
@@ -379,6 +386,7 @@ const ps4Games = [
     total_rating: 96.16137961163035,
     total_rating_count: 1122,
     url: "https://www.igdb.com/games/god-of-war--1",
+    price: 5000,
   },
   {
     code: 19959,
@@ -424,6 +432,7 @@ const ps4Games = [
     total_rating: 83.99797064436041,
     total_rating_count: 71,
     url: "https://www.igdb.com/games/god-of-war-iii-remastered",
+    price: 5000,
   },
   {
     code: 7334,
@@ -469,6 +478,7 @@ const ps4Games = [
     total_rating: 91.34878725854095,
     total_rating_count: 804,
     url: "https://www.igdb.com/games/bloodborne",
+    price: 5000,
   },
   {
     code: 42920,
@@ -504,6 +514,7 @@ const ps4Games = [
     summary:
       "The plot revolves around Aloy, a hunter and archer living in a world overrun by robots. Having been cloistered her whole life, she sets out to discover the dangers that kept her sheltered. The character makes use of ranged, melee weapons and stealth tactics to combat the mechanised creatures, whose remains can also be looted for resources. A skill tree facilitates gameplay improvements. The game features an open world environment for Aloy to explore, divided into tribes that hold side quests to undertake, while the main story guides her throughout the whole world.",
     url: "https://www.igdb.com/games/horizon-zero-dawn-collectors-edition",
+    price: 5000,
   },
 ];
 
