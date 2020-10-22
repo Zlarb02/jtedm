@@ -75,6 +75,26 @@ export function makeApp(mongoClient: MongoClient): core.Express {
     response.redirect(authURLinString);
   });
 
+
+  /* http://localhost:8080/oauth/callback?code=zwKc_0DnGn-77tTrm8rJSQ%3D%3D&state=state */
+  app.get("/oauth/callback", sessionParser, async (request, response) => {
+    const stringiAuthCode = `${request.query.code}`;
+    const token = await oauthClient.getTokensFromAuthorizationCode(stringiAuthCode);
+    if (request.session) {
+      request.session.accessToken = token.access_token;
+    }
+    response.redirect("/loggued-in");
+  });
+
+  app.get("/loggued-in", sessionParser, async (request, response) => {
+    if (!request.session || !request.session.accessToken) {
+      // Can't find the session
+      response.redirect("/login");
+      return;
+    }
+    response.render("pages/loggued-in");
+  });
+  
   app.get("/", (_request, response) => response.render("pages/home"));
   app.get("/api", (_request, response) => response.render("pages/api"));
 
