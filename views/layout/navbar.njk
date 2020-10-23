@@ -22,15 +22,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/api">API</a>
         </li>
-      <button id="loginNout-btn" class="d-none d-lg-block">
-      {% if isLoggedIn %}
-        <a class="nav-link-log" href="/logout">Log out</a>
-      {% else %}
-        <a class="nav-link-log" href="/login">Log in</a>
-      {% endif %}
-      </button>
-    </ul>
-  </div>
+      </ul>
+    </div>
+    {% if isLoggedIn %}
+      <a href="/logout">
+        <button id="" class="d-none d-lg-block btn btn-outline-secondary mr-2">Log out</button>
+      </a>
+    {% else %}
+      <a href="/login">
+        <button id="" class="d-none d-lg-block btn btn-outline-secondary mr-2">Log in</button>
+      </a>
+    {% endif %}
+
     <a href="/cart">
       <button class="btn btn-outline-secondary"><i class="fas fa-shopping-cart"></i></button>
     </a>

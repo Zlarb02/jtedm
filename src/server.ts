@@ -53,7 +53,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
     clientSecret: `${process.env.CLIENT_SECRET}`,
     redirectURI: "http://localhost:8080/oauth/callback",
     audience: `${process.env.AUDIENCE}`,
-    scopes: ["email"],
+    scopes: ["openid", "email"],
   };
 
   const oauthClient = new OAuth2Client(oauthClientConstructorProps);
@@ -76,6 +76,7 @@ export function makeApp(mongoClient: MongoClient): core.Express {
   app.get("/oauth/callback", sessionParser, async (request, response) => {
     const stringiAuthCode = `${request.query.code}`;
     const token = await oauthClient.getTokensFromAuthorizationCode(stringiAuthCode);
+    console.log(token);
     if (request.session) {
       request.session.accessToken = token.access_token;
     }
