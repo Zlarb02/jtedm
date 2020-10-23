@@ -15,7 +15,9 @@
         <h1>Platforms</h1>
       </div>
       <div class="col text-right">
-        <a href="/platforms/new" class="btn btn-success btn-lg">Create a Platform</a>
+        {% if isLoggedIn %}
+          <a href="/platforms/new" class="btn btn-success btn-lg">Create a Platform</a>
+        {% endif %}
       </div>
     </div>
   </div>
