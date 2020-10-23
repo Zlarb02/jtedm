@@ -8,7 +8,11 @@
   <div class="container mt-5 mb-5">
     <div class="row justify-content-center align-items-center">
       <h1>{{platform.name}}</h1>
-      <a href="/platforms/{{platform.slug}}/edit" class="btn btn-success ml-5">Edit</a>
+
+      {% if isLoggedIn %}
+        <a href="/platforms/{{platform.slug}}/edit" class="btn btn-success ml-5">Edit</a>
+      {% endif %}
+
     </div>
   </div>
   <div class="container mb-5">
