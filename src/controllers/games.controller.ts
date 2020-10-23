@@ -207,6 +207,5 @@ export function getCart(gameModel: GameModel) {
     // response.json(game?.name);
     response.render("pages/cart", { game: game });
     console.log({ game: game?.name });
-    console.log("post !");
   };
 }

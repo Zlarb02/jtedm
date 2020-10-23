@@ -1,30 +1,36 @@
 {% extends "layout/index.njk" %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid mt-4">
     <div class="container">
-        <h1 class="display-4">Votre panier est pas vide</h1>
+        <h1 class="display-4">Votre panier</h1>
     </div>
 </div>
 <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col"></th>
         <th scope="col">Titre du jeu</th>
-        <th scope="col">Quantité</th>
         <th scope="col">Prix</th>
-        <th scope="col">Total</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Sous-Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>{{ game.name }}</td>
-        <td>1</td>
-        <td>{{ game.price / 100 | round(2)}}</td>
-        <td>{{ game.price / 100 | round(2)}}</td>
+        <th><img src="{{game.cover.url}}" alt="{{game.name}} cover" class="mr-2" style="max-width: 200px; max-height: 80px;"></th>
+        <td class="align-middle">{{ game.name }}</td>
+        <td class="align-middle">{{ game.price / 100 | round(2) }}€</td>
+        <td class="align-middle"><input type="number" id="tentacles" name="quantity" value="1"></td>
+        <td class="align-middle">{{ game.price / 100  | round(2) }}€</td>
       </tr>
       <tr>
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-9"></div>
+    <div class=" col-3">
+      <h6>Total</h6>
+    </div>
+  </div>
 {% endblock %}
