@@ -7,3 +7,21 @@
     flex-direction: row;
   }
 }
+
+.cardprice {
+  position: relative;
+  display: flex;
+}
+
+.btnpos {
+  display: flex;
+  position: absolute;
+  top: 12.8%;
+}
+
+.btnadd {
+  background-color: transparent;
+  border: tomato;
+  color: #007bff;
+  display: contents;
+}
